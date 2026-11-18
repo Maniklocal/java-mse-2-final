@@ -1,0 +1,90 @@
+{
+  "info": {
+    "name": "Employee Management API",
+    "_postman_id": "4f8ad7e5-7d75-4cf4-8a72-employee-management-api",
+    "description": "Manual exam demonstration requests for EmployeeManagementAPI.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Create Employee 1",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {"mode": "raw", "raw": "{\n  \"id\": 101,\n  \"name\": \"Aman\",\n  \"department\": \"IT\",\n  \"salary\": 50000\n}"},
+        "url": {"raw": "{{baseUrl}}/employees", "host": ["{{baseUrl}}"], "path": ["employees"]}
+      }
+    },
+    {
+      "name": "2. Create Employee 2",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {"mode": "raw", "raw": "{\n  \"id\": 102,\n  \"name\": \"Simran\",\n  \"department\": \"HR\",\n  \"salary\": 45000\n}"},
+        "url": {"raw": "{{baseUrl}}/employees", "host": ["{{baseUrl}}"], "path": ["employees"]}
+      }
+    },
+    {
+      "name": "3. Duplicate Employee ID",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {"mode": "raw", "raw": "{\n  \"id\": 101,\n  \"name\": \"Duplicate Aman\",\n  \"department\": \"IT\",\n  \"salary\": 51000\n}"},
+        "url": {"raw": "{{baseUrl}}/employees", "host": ["{{baseUrl}}"], "path": ["employees"]}
+      }
+    },
+    {
+      "name": "4. Invalid Employee",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {"mode": "raw", "raw": "{\n  \"id\": 103,\n  \"name\": \"Invalid Employee\",\n  \"department\": \"IT\",\n  \"salary\": -1000\n}"},
+        "url": {"raw": "{{baseUrl}}/employees", "host": ["{{baseUrl}}"], "path": ["employees"]}
+      }
+    },
+    {
+      "name": "5. Get All Employees",
+      "request": {"method": "GET", "url": {"raw": "{{baseUrl}}/employees", "host": ["{{baseUrl}}"], "path": ["employees"]}}
+    },
+    {
+      "name": "6. Get Employee 101",
+      "request": {"method": "GET", "url": {"raw": "{{baseUrl}}/employees/101", "host": ["{{baseUrl}}"], "path": ["employees", "101"]}}
+    },
+    {
+      "name": "7. Employee Not Found",
+      "request": {"method": "GET", "url": {"raw": "{{baseUrl}}/employees/999", "host": ["{{baseUrl}}"], "path": ["employees", "999"]}}
+    },
+    {
+      "name": "8. Update Employee 101",
+      "request": {
+        "method": "PUT",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {"mode": "raw", "raw": "{\n  \"name\": \"Aman Singh\",\n  \"department\": \"Engineering\",\n  \"salary\": 60000\n}"},
+        "url": {"raw": "{{baseUrl}}/employees/101", "host": ["{{baseUrl}}"], "path": ["employees", "101"]}
+      }
+    },
+    {
+      "name": "9. Update Missing Employee",
+      "request": {
+        "method": "PUT",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {"mode": "raw", "raw": "{\n  \"name\": \"Missing\",\n  \"department\": \"IT\",\n  \"salary\": 60000\n}"},
+        "url": {"raw": "{{baseUrl}}/employees/999", "host": ["{{baseUrl}}"], "path": ["employees", "999"]}
+      }
+    },
+    {
+      "name": "10. Delete Employee 102",
+      "request": {"method": "DELETE", "url": {"raw": "{{baseUrl}}/employees/102", "host": ["{{baseUrl}}"], "path": ["employees", "102"]}}
+    },
+    {
+      "name": "11. Delete Missing Employee",
+      "request": {"method": "DELETE", "url": {"raw": "{{baseUrl}}/employees/999", "host": ["{{baseUrl}}"], "path": ["employees", "999"]}}
+    }
+  ]
+}
